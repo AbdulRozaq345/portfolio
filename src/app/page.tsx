@@ -1,18 +1,49 @@
+'use client';
+import { motion } from "framer-motion";
 import GradientText from "@/components/GradientText";
 import { NavbarDemo } from "@/components/rezable-navbar";
 import SvgComponent1 from "@/components/svg";
 import SvgComponent from "@/components/svgC";
 import CircularText from "@/components/CircularText";
 import CurvedLoop from "@/components/CurvedLoop";
+import OrbitCircle from "@/components/OrbitLogo";
+import TextHover from "@/components/TextHover";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowPointer } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
+import LoadingPage from "@/components/LoadingPage";
+import Text from "@/components/text";
+import { HeroParallaxDemo } from "@/components/hero-parallax" ;
+import Services from "@/components/services";
+import Partner from "@/components/partner";
 
 export default function Home() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 3000);
+    return () => clearTimeout(timer);
+  },[]);
+
+  if (loading) return <LoadingPage />;
+
+
   return (
-    <div className="min-h-screen font-sans dark:bg-black">
+    <motion.main
+initial={{ y: "100vh" }} // Mulai dari dasar layar (ngumpet di bawah)
+          animate={{ y: 0 }}       // Naik ke posisi normal
+          transition={{ 
+            duration: 1.2, 
+            ease: [0.76, 0, 0.24, 1], // Cubic-bezier buat efek "Power" pas naik
+          }}
+          className="min-h-screen"
+    >
+    <div className="min-h-screen font-sans dark:bg-black ">
       <section className="w-full px-4 min-h-screen">
         <NavbarDemo />
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-center max-w-screen ">
           <div className="md:col-span-6 flex flex-col justify-center items-center md:items-start order-2 md:order-1 text-center md:text-left">
-            <div className="relative top-100 mb-6 w-full flex items-center justify-center md:justify-start md:left-12 md:top-70 ">
+            <div className="relative top-110 mb-6 w-full flex items-center justify-center md:justify-start md:left-12 md:top-70 ">
               {""}
 
               <GradientText
@@ -41,7 +72,7 @@ export default function Home() {
             <SvgComponent1 />
           </div>
           <div className=" md:col-span-6 flex flex-col items-center md:items-start text-center md:text-left order-1 md:order-2 ">
-            <div className="relative flex top-100 right-20 items-center justify-center md:right-150 md:top-140 ">
+            <div className="relative flex top-110 right-20 items-center justify-center md:right-150 md:top-140 ">
               <SvgComponent />
               <div className="absolute flex items-center justify-center pointer-events-none md:text-center md:items-center md:justify-center">
                 <CircularText
@@ -56,16 +87,70 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full px-4 min-h-screen flex items-center justify-center">
-        <CurvedLoop
-          marqueeText="robin ngemut biji prabowo"
-          speed={2}
-          curveAmount={0}
-          direction="right"
-          interactive={false}
-          className="custom-text-style  "
-        />
+      <section className="w-full px-4 min-h-screen flex flex-col items-center justify-center">
+        <div className="w-full ">
+          <CurvedLoop
+            marqueeText="NEXXACODE"
+            speed={2}
+            curveAmount={0}
+            direction="left"
+            interactive={false}
+            className="custom-text-style text-[6rem] md:text-[6rem] -translate-y-320 md:translate-y-[40rem]"
+          />
+        </div>
+        <div className=" hidden md:flex absolute flex flex-col items-center top-[50rem] left-0 p-0 m-0 justify-center w-full h-full">
+          <div className="bg-cyan-300 w-120 h-80 rounded-full absolute -z-10 blur-3xl opacity-20  "></div>
+          <div className="flex items-center justify-center z-20 top-0 left-0 absolute w-full h-full">
+            <div className="text-7xl flex flex-col font-semibold text-center items-center justify-center">
+              <div className="flex items-center gap-4  ">
+                <TextHover value={7} />
+                <span> YEARS OF</span>
+              </div>
+              <span>
+                EXPERIENCE IN <br /> WEB DEVELOPMENT
+              </span>
+            </div>
+          </div>
+          <OrbitCircle />
+
+          <div className="left-47 relative ">
+            <FontAwesomeIcon
+              icon={faArrowPointer}
+              style={{ color: "rgb(99, 230, 190)" }}
+              className="w-7 h-7"
+            />
+          </div>
+        </div>
+        <div className="relative flex flex-col bottom-[40rem] md:mt-0 md:top-[30rem]">
+          <h1 className="text-4xl font-bold font-serif text-center items-center justify-center">
+            About
+          </h1>
+          <div className="w-120 h-120 md:w-170 md:h-170 rounded-full bg-cyan-400 md:top-0 top-80 absolute md:m-0 md:p-0 -z-1 blur-2xl opacity-27 right-70 md:right-290 md:bottom-60 "></div>
+          <div className="w-18 h-120 md:w-170 md:h-170 rounded-full bg-cyan-400 md:top-160 top-360 absolute md:m-0 md:p-0 -z-1 blur-2xl opacity-5 left-70 md:right-290 md:bottom-0  "></div>
+          <Text />
+        </div>
       </section>
+
+      <section className="w-full p-4 bottom-[20rem] md:mt-0 md:top-[40rem] min-h-screen flex items-center justify-center relative">
+        <div>
+          <HeroParallaxDemo />
+        </div>
+      </section>
+
+      <section className="w-full relative top-[30rem] min-h-screen w-screen">
+        <Services />
+      </section>
+
+      <section className="w-full relative top-[30rem] min-h-screen w-screen">
+          <Partner />
+      </section>
+
+      <section className="">
+        
+      </section>
+
     </div>
+    </motion.main>
   );
 }
+
