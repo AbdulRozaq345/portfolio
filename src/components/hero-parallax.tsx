@@ -7,14 +7,14 @@ export function HeroParallaxDemo() {
 }
 export const products = [
   {
-    title: "ThunderAi",
-    link: "https://chat-ai-sigma.vercel.app/",
-    thumbnail: ["/thunderAi.png"],
-  },
-  {
     title: "AikoCare",
     link: "https://aikocare.vercel.app/",
     thumbnail: ["/aikocare.png"],
+  },
+  {
+    title: "ThunderAi",
+    link: "https://chat-ai-sigma.vercel.app/",
+    thumbnail: ["/thunderAi.png"],
   },
   {
     title: "YayasanNivara",

@@ -21,7 +21,7 @@ const partners = [
 
 export default function Partner() {
   return (
-    <section className="w-full py-24 bg-black flex flex-col items-center justify-center">
+    <section className="w-full py-24 bg-white/80 flex flex-col items-center justify-center">
       <div className="text-center mb-16 px-4">
         <motion.h5
           initial={{ opacity: 0, y: 20 }}
@@ -35,7 +35,7 @@ export default function Partner() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-4xl md:text-6xl font-bold text-white font-serif"
+          className="text-4xl md:text-6xl font-bold text-black font-serif"
         >
           our partners
         </motion.h2>
@@ -48,7 +48,7 @@ export default function Partner() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="group relative w-full md:w-[400px] h-[500px] rounded-3xl overflow-hidden border border-white/10 bg-zinc-900/50 backdrop-blur-sm"
+              className="group relative w-full md:w-[300px] h-[400px] rounded-3xl overflow-hidden border border-white/10 bg-zinc-900/50 backdrop-blur-sm"
             >
               <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out">
                 <Image
@@ -84,6 +84,7 @@ export default function Partner() {
           ))}
         </div>
       </div>
+      <div className="absolute top-[30rem] -z-10 hidden h-100 w-full rounded-full bg-cyan-400 opacity-30 blur-2xl md:block md:w-full"></div>
     </section>
   );
 }

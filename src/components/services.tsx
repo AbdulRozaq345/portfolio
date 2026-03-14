@@ -38,39 +38,37 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="relative  min-h-screen w-full overflow-visible border-y border-emerald-900/60 bg-slate-950 px-6 py-20 md:px-10 lg:px-16 lg:py-28">
-            <div className="relative flex items-center justify-center self-center lg:self-center left-0 right-0 -translate-y-30 ">
-              <div className="absolute h-36 w-36 rounded-full border border-emerald-500/30 bg-[linear-gradient(229deg,rgba(33,33,33,1)_0%,rgba(13,13,13,1)_44%,rgba(31,181,103,1)_100%)] shadow-[0_0_60px_rgba(16,185,129,0.2)]" />
-              <div className="absolute z-10">
-                <CircularText
-                  text="WEB*PROGRAMMING*"
-                  onHover="speedUp"
-                  spinDuration={20}
-                  className="scale-65 text-lg font-bold text-white md:text-sm"
-                />
-              </div>
-              <FontAwesomeIcon
-                icon={faArrowDownLong}
-                size="2x"
-                className="z-20 text-white"
-              />
-            </div>
+    <section className="relative min-h-screen w-full overflow-visible border-y border-emerald-900/60 bg-slate-950 px-6 py-16 md:px-10 md:py-20 lg:px-16 lg:py-24">
+      <div className="relative left-0 right-0 flex items-center justify-center self-center -translate-y-12 lg:self-center md:-translate-y-16 ">
+        <div className="absolute h-36 w-36 rounded-full border border-emerald-500/30 bg-[linear-gradient(229deg,rgba(33,33,33,1)_0%,rgba(13,13,13,1)_44%,rgba(31,181,103,1)_100%)] shadow-[0_0_60px_rgba(16,185,129,0.2)]" />
+        <div className="absolute z-10">
+          <CircularText
+            text="WEB*PROGRAMMING*"
+            onHover="speedUp"
+            spinDuration={20}
+            className="md:scale-65 text-lg font-bold text-white text-sm"
+          />
+        </div>
+        <FontAwesomeIcon
+          icon={faArrowDownLong}
+          size="2x"
+          className="z-20 text-white"
+        />
+      </div>
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.14),transparent_30%),radial-gradient(circle_at_80%_55%,rgba(34,211,238,0.12),transparent_24%)]" />
       <div className="absolute left-1/2 top-28 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl" />
 
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-14 lg:gap-20">
+      <div className="mx-auto mt-12  flex w-full max-w-7xl flex-col gap-14 lg:gap-20">
         <div className="grid items-end gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="flex flex-col items-center gap-6 text-center">
-
             <div className="space-y-4">
               <p className="text-sm font-semibold uppercase tracking-[0.35em] text-emerald-400">
                 How Can I Help?
               </p>
               <div className="space-y-5">
                 <h2 className="max-w-2xl text-5xl font-semibold leading-none text-white md:text-7xl lg:text-8xl">
-                  Services 
+                  Services
                 </h2>
-                
               </div>
             </div>
           </div>
@@ -137,7 +135,6 @@ export default function Services() {
                   <p className="max-w-[15rem] text-sm text-slate-400">
                     {service.meta}
                   </p>
-                  
                 </div>
               </div>
             </article>

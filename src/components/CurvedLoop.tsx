@@ -37,6 +37,7 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
   const textPathRef = useRef<SVGTextPathElement | null>(null);
   const pathRef = useRef<SVGPathElement | null>(null);
   const [spacing, setSpacing] = useState(0);
+  const [pathLength, setPathLength] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const uid = useId();
   const pathId = `curve-${uid}`;
@@ -48,8 +49,9 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
   const velRef = useRef(0);
 
   const textLength = spacing;
+  const repeatedLength = pathLength > 0 ? pathLength + spacing * 2 : 1800;
   const totalText = textLength
-    ? Array(Math.ceil(1800 / textLength) + 2)
+    ? Array(Math.ceil(repeatedLength / textLength) + 2)
         .fill(text)
         .join("")
     : text;
@@ -59,6 +61,12 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
     if (measureRef.current)
       setSpacing(measureRef.current.getComputedTextLength());
   }, [text, className]);
+
+  useEffect(() => {
+    if (pathRef.current) {
+      setPathLength(pathRef.current.getTotalLength());
+    }
+  }, [curveAmount]);
 
   useEffect(() => {
     if (!spacing || !ready) return;
