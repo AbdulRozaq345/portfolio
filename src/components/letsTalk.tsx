@@ -34,14 +34,7 @@ export default function LetsTalk() {
       className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden bg-black px-4 py-16 text-white md:h-screen md:px-6"
     >
       <div>
-        <TargetCursor
-          
-          spinDuration={2}
-          hideDefaultCursor
-          parallaxOn
-          hoverDuration={0.2}
-          
-        />
+
         <div className=" hidden md:flex absolute inset-x-0 top-1/2 -translate-y-1/2 opacity-30">
           <CurvedLoop
             marqueeText="Let's Talk Let's Talk Let's Talk Let's Talk Let's Talk Let's Talk Let's Talk Let's Talk "

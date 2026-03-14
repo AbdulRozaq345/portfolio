@@ -17,6 +17,7 @@ import { HeroParallaxDemo } from "@/components/hero-parallax";
 import Services from "@/components/services";
 import Partner from "@/components/partner";
 import LetsTalk from "@/components/letsTalk";
+import TargetCursor from "@/components/TargetCursor";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -39,6 +40,12 @@ export default function Home() {
       className="min-h-screen"
     >
       <div className="min-h-screen font-sans dark:bg-black ">
+        <TargetCursor
+          spinDuration={2}
+          hideDefaultCursor
+          parallaxOn
+          hoverDuration={0.2}
+        />
         <section className="z-50">
           <section className="w-full px-4 min-h-screen">
             <NavbarDemo />
