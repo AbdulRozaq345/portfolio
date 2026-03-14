@@ -3,7 +3,6 @@ import { gsap } from "gsap";
 
 export interface TargetCursorProps {
   targetSelector?: string;
-  scopeSelector?: string;
   spinDuration?: number;
   hideDefaultCursor?: boolean;
   hoverDuration?: number;
@@ -12,7 +11,6 @@ export interface TargetCursorProps {
 
 const TargetCursor: React.FC<TargetCursorProps> = ({
   targetSelector = ".cursor-target",
-  scopeSelector,
   spinDuration = 2,
   hideDefaultCursor = true,
   hoverDuration = 0.2,
@@ -34,9 +32,8 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
     const hasTouchScreen =
       "ontouchstart" in window || navigator.maxTouchPoints > 0;
     const isSmallScreen = window.innerWidth <= 768;
-    const windowWithOpera = window as Window & { opera?: string };
     const userAgent =
-      navigator.userAgent || navigator.vendor || windowWithOpera.opera || "";
+      navigator.userAgent || navigator.vendor || (window as any).opera;
     const mobileRegex =
       /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i;
     const isMobileUserAgent = mobileRegex.test(userAgent.toLowerCase());
@@ -53,16 +50,9 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
   useEffect(() => {
     if (isMobile || !cursorRef.current) return;
 
-    const scopeElement = scopeSelector
-      ? document.querySelector(scopeSelector)
-      : document.body;
-
-    if (!(scopeElement instanceof HTMLElement)) return;
-
-    const originalCursor = scopeElement.style.cursor;
-    const activeStrength = activeStrengthRef.current;
+    const originalCursor = document.body.style.cursor;
     if (hideDefaultCursor) {
-      scopeElement.style.cursor = "none";
+      document.body.style.cursor = "none";
     }
 
     const cursor = cursorRef.current;
@@ -86,18 +76,19 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       yPercent: -50,
       x: window.innerWidth / 2,
       y: window.innerHeight / 2,
-      autoAlpha: 0,
     });
 
     const createSpinTimeline = () => {
       if (spinTl.current) {
         spinTl.current.kill();
       }
-      spinTl.current = gsap.timeline({ repeat: -1 }).to(cursor, {
-        rotation: "+=360",
-        duration: spinDuration,
-        ease: "none",
-      });
+      spinTl.current = gsap
+        .timeline({ repeat: -1 })
+        .to(cursor, {
+          rotation: "+=360",
+          duration: spinDuration,
+          ease: "none",
+        });
     };
 
     createSpinTimeline();
@@ -135,20 +126,8 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
 
     tickerFnRef.current = tickerFn;
 
-    const showCursor = () => {
-      gsap.to(cursor, { autoAlpha: 1, duration: 0.15, overwrite: "auto" });
-    };
-
-    const hideCursor = () => {
-      gsap.to(cursor, { autoAlpha: 0, duration: 0.15, overwrite: "auto" });
-    };
-
-    const moveHandler = (e: MouseEvent) => {
-      showCursor();
-      moveCursor(e.clientX, e.clientY);
-    };
-    scopeElement.addEventListener("mouseenter", showCursor);
-    scopeElement.addEventListener("mousemove", moveHandler);
+    const moveHandler = (e: MouseEvent) => moveCursor(e.clientX, e.clientY);
+    window.addEventListener("mousemove", moveHandler);
 
     const scrollHandler = () => {
       if (!activeTarget || !cursorRef.current) return;
@@ -177,8 +156,8 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       gsap.to(cursorRef.current, { scale: 1, duration: 0.2 });
     };
 
-    scopeElement.addEventListener("mousedown", mouseDownHandler);
-    scopeElement.addEventListener("mouseup", mouseUpHandler);
+    window.addEventListener("mousedown", mouseDownHandler);
+    window.addEventListener("mouseup", mouseUpHandler);
 
     const enterHandler = (e: MouseEvent) => {
       const directTarget = e.target as Element;
@@ -306,41 +285,28 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       target.addEventListener("mouseleave", leaveHandler);
     };
 
-    scopeElement.addEventListener("mouseover", enterHandler as EventListener);
-
-    const scopeLeaveHandler = () => {
-      currentLeaveHandler?.();
-      hideCursor();
-    };
-
-    scopeElement.addEventListener("mouseleave", scopeLeaveHandler);
+    window.addEventListener("mouseover", enterHandler as EventListener);
 
     return () => {
       if (tickerFnRef.current) {
         gsap.ticker.remove(tickerFnRef.current);
       }
-      scopeElement.removeEventListener("mouseenter", showCursor);
-      scopeElement.removeEventListener("mousemove", moveHandler);
-      scopeElement.removeEventListener(
-        "mouseover",
-        enterHandler as EventListener,
-      );
+      window.removeEventListener("mousemove", moveHandler);
+      window.removeEventListener("mouseover", enterHandler as EventListener);
       window.removeEventListener("scroll", scrollHandler);
-      scopeElement.removeEventListener("mousedown", mouseDownHandler);
-      scopeElement.removeEventListener("mouseup", mouseUpHandler);
-      scopeElement.removeEventListener("mouseleave", scopeLeaveHandler);
+      window.removeEventListener("mousedown", mouseDownHandler);
+      window.removeEventListener("mouseup", mouseUpHandler);
       if (activeTarget) {
         cleanupTarget(activeTarget);
       }
       spinTl.current?.kill();
-      scopeElement.style.cursor = originalCursor;
+      document.body.style.cursor = originalCursor;
       isActiveRef.current = false;
       targetCornerPositionsRef.current = null;
-      activeStrength.current = 0;
+      activeStrengthRef.current.current = 0;
     };
   }, [
     targetSelector,
-    scopeSelector,
     spinDuration,
     moveCursor,
     constants,
@@ -354,11 +320,13 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
     if (isMobile || !cursorRef.current || !spinTl.current) return;
     if (spinTl.current.isActive()) {
       spinTl.current.kill();
-      spinTl.current = gsap.timeline({ repeat: -1 }).to(cursorRef.current, {
-        rotation: "+=360",
-        duration: spinDuration,
-        ease: "none",
-      });
+      spinTl.current = gsap
+        .timeline({ repeat: -1 })
+        .to(cursorRef.current, {
+          rotation: "+=360",
+          duration: spinDuration,
+          ease: "none",
+        });
     }
   }, [spinDuration, isMobile]);
 

@@ -30,12 +30,12 @@ const links = [
 export default function LetsTalk() {
   return (
     <section
-      id="#lets-talk-container"
+      
       className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden bg-black px-4 py-16 text-white md:h-screen md:px-6"
     >
       <div>
         <TargetCursor
-          scopeSelector="#lets-talk-container"
+          
           spinDuration={2}
           hideDefaultCursor
           parallaxOn
