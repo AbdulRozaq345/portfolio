@@ -15,7 +15,7 @@ const OrbitCircle = () => {
       {/* Bungkus Logo Figma biar gampang ngatur posisinya */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <Image
-          src="/figma-emblem.png"
+          src="/Figma-Emblem.png"
           alt="figma"
           className="w-30 h-15 animate-[spin_10s_linear_infinite_reverse]"
           width={120}
