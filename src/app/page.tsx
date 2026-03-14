@@ -149,12 +149,12 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative hidden w-full overflow-hidden bg-black md:block md:min-h-[220vh]">
-          <div className="sticky top-[90rem] h-screen h-screen-fix w-full">
+        <section className="relative hidden w-full overflow-clip bg-black  md:block md:min-h-[220vh]">
+          <div className="sticky top-0 h-screen w-full">
             <LetsTalk />
           </div>
 
-          <div className="relative z-10 -mt-[100vh] -mt-screen-fix min-h-[120vh] bg-white">
+          <div className="relative z-10 -mt-[100vh] min-h-[120vh] bg-white">
             <Partner />
           </div>
         </section>
