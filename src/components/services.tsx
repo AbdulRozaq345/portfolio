@@ -38,6 +38,12 @@ const services = [
 ];
 
 export default function Services() {
+    const link = [
+    {
+      id: 1,
+      link: "https://wa.me/6285122908813",
+    },
+  ];
   return (
     <section className="relative min-h-screen w-full overflow-visible border-y border-emerald-900/60 bg-slate-950 px-6 py-16 md:px-10 md:py-20 lg:px-16 lg:py-24">
       <div className="relative left-0 right-0 flex items-center justify-center self-center -translate-y-12 lg:self-center md:-translate-y-16 ">
@@ -153,8 +159,11 @@ export default function Services() {
               page.
             </p>
           </div>
+          {link.map((link)=> (
+
           <a
-            href="#contact"
+          key={link.id}
+            href={link.link}
             className="inline-flex cursor-target items-center gap-3 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-5 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200 transition-colors hover:border-emerald-300/60 hover:bg-emerald-400/20"
           >
             Let&apos;s Talk
@@ -172,6 +181,7 @@ export default function Services() {
               />
             </svg>
           </a>
+          ))}
         </div>
       </div>
     </section>
