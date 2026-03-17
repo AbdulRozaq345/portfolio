@@ -6,13 +6,13 @@ import { faArrowDownLong } from "@fortawesome/free-solid-svg-icons";
 const services = [
   {
     number: "01",
-    title: "UI DESIGN",
+    title: "SEO Optimization",
     description:
-      "I turn your references, business goals, and brand personality into an interface that looks polished and feels clear to use.",
+      "We elevate your digital presence by aligning search intent with technical precision, ensuring your brand ranks where it matters most.",
     detail:
-      "Focused on visual direction, layout systems, and a clean design handoff.",
-    meta: "Figma, wireframes, lightweight design system",
-    accent: "from-emerald-400/30 via-emerald-300/10 to-transparent",
+      "Focused on keyword strategy, technical site audits, and high-authority backlink architecture.",
+    meta: "Ahrefs, Google Search Console, On-page/Off-page SEO",
+    accent: "from-cyan-400/30 via-cyan-300/10 to-transparent",
   },
   {
     number: "02",
@@ -24,15 +24,16 @@ const services = [
     meta: "Next.js, responsive build, production-ready frontend",
     accent: "from-cyan-400/30 via-cyan-300/10 to-transparent",
   },
+
   {
     number: "03",
-    title: "CYBER SECURITY",
+    title: "System Maintenance",
     description:
-      "Ensuring your digital assets remain impenetrable. I provide comprehensive security audits and system hardening to protect your infrastructure from evolving threats.",
+      "We keep your digital assets running at peak performance, providing a secure and seamless experience through proactive updates and monitoring.",
     detail:
-      "Specializing in vulnerability assessments, server-side security protocols, and data integrity audits.",
-    meta: "Vulnerability Assessment, Hardening, Threat Mitigation",
-    accent: "from-sky-400/30 via-sky-300/10 to-transparent",
+      "Focused on security patching, database optimization, and real-time performance tuning.",
+    meta: "Uptime monitoring, Security audits, Automated backups",
+    accent: "from-cyan-400/30 via-cyan-300/10 to-transparent",
   },
 ];
 

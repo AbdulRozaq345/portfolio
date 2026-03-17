@@ -29,6 +29,13 @@ export default function Home() {
 
   if (loading) return <LoadingPage />;
 
+  const link = [
+    {
+        id: 1,
+        link: "https://wa.me/6285122908813",
+      },
+  ]
+
   return (
     <motion.main
       initial={{ y: "100vh" }} // Mulai dari dasar layar (ngumpet di bawah)
@@ -72,9 +79,18 @@ export default function Home() {
                       your audience love .
                     </p>
                   </div>
+                  {link.map((item) => (
+                    <a 
+                    key={item.id}
+                    href={item.link}
+                    className="block"
+                    >
+
                   <div className="flex relative cursor-target items-center justify-center top-[16rem] md:top-[14rem] md:scale-120 ">
                     <Button />
                   </div>
+                    </a>
+                  ))}
                 </div>
                 <div className="w-120 h-120 md:w-170 md:h-170 rounded-full bg-cyan-400 md:top-0 top-80 absolute md:m-0 md:p-0 -z-1 blur-2xl opacity-20 right-70 md:right-290 md:bottom-60 "></div>
                 <div className="w-120 h-120 hidden md:block md:items-end md:justify-end  rounded-full bg-cyan-400 md:top-0 md:m-0 md:p-0 -z-1 blur-2xl absolute opacity-20 left-200  "></div>
@@ -129,7 +145,10 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div className="relative flex flex-col mt-20 md:bottom-[40rem] md:mt-0 md:top-[30rem]">
+            <div
+              id="about"
+              className="relative flex flex-col mt-20 md:bottom-[40rem] md:mt-0 md:top-[30rem]"
+            >
               <h1 className="text-4xl font-bold font-serif text-center items-center justify-center">
                 About
               </h1>
@@ -145,7 +164,10 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="relative -mt-8 w-full md:mt-[40rem]">
+          <section
+            id="services"
+            className="relative -mt-8 w-full md:mt-[40rem]"
+          >
             <Services />
           </section>
         </section>
