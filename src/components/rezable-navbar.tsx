@@ -45,17 +45,17 @@ export function NavbarDemo() {
 
         <NavBody>
           <NavbarLogo />
-          <div className="bg-gray-800 opacity-90 w-[480px] h-10  rounded-full flex items-center justify-center">
+          <div className="bg-gray-800 opacity-90 w-120 h-10  rounded-full flex items-center justify-center">
             <NavItems
               items={navItems}
-              className="!text-white h-full relative flex items-center"
+              className="text-white! h-full relative flex items-center"
             />
           </div>
           {link.map((item) => (
             <a key={item.id} href={item.link} className="cursor-target block">
               <div className="hidden md:flex gap-4">
                 <div className="border border-white/20 h-10 w-44 rounded-full flex items-center px-4 gap-3 bg-black/40 overflow-hidden">
-                  <div className="relative flex h-2 w-2 flex-shrink-0">
+                  <div className="relative flex h-2 w-2 shrink-0">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                   </div>

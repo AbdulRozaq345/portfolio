@@ -18,7 +18,6 @@ import Partner from "@/components/partner";
 import LetsTalk from "@/components/letsTalk";
 import TargetCursor from "@/components/TargetCursor";
 import Button from "@/components/button";
-import DecryptedText from "@/components/DecryptedText";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -77,7 +76,7 @@ export default function Home() {
                       colors={["#68E3AF", "#3D628F", "#91BDB1"]}
                       animationSpeed={4}
                       showBorder={false}
-                      className="text-sm md:text-base mb-2 font-serif uppercase font-bold md:absolute md:bottom-20 md:left-[27rem]"
+                      className="text-sm md:text-base mb-2 font-serif uppercase font-bold md:absolute md:bottom-20 md:left-108"
                     >
                       DESIGNER & WEB DEVELOPER EXPERT
                     </GradientText>
@@ -92,7 +91,7 @@ export default function Home() {
                     </div>
                     {link.map((item) => (
                       <a key={item.id} href={item.link} className="block">
-                        <div className="flex relative cursor-target items-center justify-center top-[16rem] md:top-[14rem] md:scale-120 ">
+                        <div className="flex relative cursor-target items-center justify-center top-64 md:top-56 md:scale-120 ">
                           <Button />
                         </div>
                       </a>
@@ -125,10 +124,10 @@ export default function Home() {
                   curveAmount={0}
                   direction="left"
                   interactive={false}
-                  className="custom-text-style text-[6rem] md:text-[6rem] -translate-y-320 md:translate-y-[40rem]"
+                  className="custom-text-style text-[6rem] md:text-[6rem] -translate-y-320 md:translate-y-160"
                 />
               </div>
-              <div className=" hidden md:flex flex-col absolute items-center top-[50rem] left-0 p-0 m-0 justify-center w-full h-full">
+              <div className=" hidden md:flex flex-col absolute items-center top-200 left-0 p-0 m-0 justify-center w-full h-full">
                 <div className="bg-cyan-300 w-120 h-80 rounded-full absolute -z-10 blur-3xl opacity-20  "></div>
                 <div className="flex items-center justify-center z-20 top-0 left-0 absolute w-full h-full">
                   <div className="text-7xl flex flex-col font-semibold text-center items-center justify-center">
@@ -153,7 +152,7 @@ export default function Home() {
               </div>
               <div
                 id="about"
-                className="relative flex flex-col mt-20 md:bottom-[40rem] md:mt-0 md:top-[30rem]"
+                className="relative flex flex-col mt-20 md:bottom-160 md:mt-0 md:top-120"
               >
                 <h1 className="text-4xl font-bold font-serif text-center items-center justify-center">
                   About
@@ -164,7 +163,7 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="relative flex w-full items-center md:top-[40rem] justify-center px-4 py-8 md:px-4 md:py-12  ">
+            <section className="relative flex w-full items-center md:top-160 justify-center px-4 py-8 md:px-4 md:py-12  ">
               <div>
                 <HeroParallaxDemo />
               </div>
@@ -172,7 +171,7 @@ export default function Home() {
 
             <section
               id="services"
-              className="relative -mt-8 w-full md:mt-[40rem]"
+              className="relative -mt-8 w-full md:mt-160"
             >
               <Services />
             </section>
