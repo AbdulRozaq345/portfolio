@@ -1,79 +1,31 @@
 "use client";
-import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import GradientText from "@/components/GradientText";
 import { NavbarDemo } from "@/components/rezable-navbar";
 import SvgComponent from "@/components/svgC";
 import CircularText from "@/components/CircularText";
+import CurvedLoop from "@/components/CurvedLoop";
+import OrbitCircle from "@/components/OrbitLogo";
+import TextHover from "@/components/TextHover";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowPointer } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import LoadingPage from "@/components/LoadingPage";
 import Text from "@/components/text";
+import { HeroParallaxDemo } from "@/components/hero-parallax";
+import Services from "@/components/services";
+import Partner from "@/components/partner";
+import LetsTalk from "@/components/letsTalk";
+import TargetCursor from "@/components/TargetCursor";
 import Button from "@/components/button";
 
-const CurvedLoop = dynamic(() => import("@/components/CurvedLoop"), {
-  ssr: false,
-});
-const OrbitCircle = dynamic(() => import("@/components/OrbitLogo"), {
-  ssr: false,
-});
-const TextHover = dynamic(() => import("@/components/TextHover"), {
-  ssr: false,
-});
-const HeroParallaxDemo = dynamic(
-  () => import("@/components/hero-parallax").then((m) => m.HeroParallaxDemo),
-  { ssr: false },
-);
-const Services = dynamic(() => import("@/components/services"), {
-  ssr: false,
-});
-const Partner = dynamic(() => import("@/components/partner"), {
-  ssr: false,
-});
-const LetsTalk = dynamic(() => import("@/components/letsTalk"), {
-  ssr: false,
-});
-const TargetCursor = dynamic(() => import("@/components/TargetCursor"), {
-  ssr: false,
-});
-
 export default function Home() {
-  const [loading, setLoading] = useState(false);
-  const [isDesktopPointer, setIsDesktopPointer] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const desktopQuery =
-      typeof window !== "undefined"
-        ? window.matchMedia("(min-width: 768px) and (pointer: fine)")
-        : null;
-
-    const updatePointer = () => {
-      setIsDesktopPointer(desktopQuery?.matches ?? false);
-    };
-
-    updatePointer();
-    desktopQuery?.addEventListener("change", updatePointer);
-
-    return () => {
-      desktopQuery?.removeEventListener("change", updatePointer);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!isDesktopPointer || typeof window === "undefined") return;
-
-    const hasSeenLoader = sessionStorage.getItem("home-loader-seen") === "1";
-    if (hasSeenLoader) return;
-
-    setLoading(true);
-    const timer = setTimeout(() => {
-      setLoading(false);
-      sessionStorage.setItem("home-loader-seen", "1");
-    }, 900);
-
+    const timer = setTimeout(() => setLoading(false), 3000);
     return () => clearTimeout(timer);
-  }, [isDesktopPointer]);
+  }, []);
 
   const link = [
     {
@@ -106,14 +58,12 @@ export default function Home() {
         className={`min-h-screen ${loading ? "overflow-hidden h-screen" : ""}`}
       >
         <div className="min-h-screen  font-sans dark:bg-black ">
-          {isDesktopPointer && (
-            <TargetCursor
-              spinDuration={2}
-              hideDefaultCursor
-              parallaxOn
-              hoverDuration={0.2}
-            />
-          )}
+          <TargetCursor
+            spinDuration={2}
+            hideDefaultCursor
+            parallaxOn
+            hoverDuration={0.2}
+          />
           <section id="home" className="z-50">
             <section className="w-full px-4 min-h-screen">
               <NavbarDemo />
@@ -216,25 +166,9 @@ export default function Home() {
             </section>
 
             <section className="relative flex w-full items-center md:top-160 justify-center px-4 py-8 md:px-4 md:py-12  ">
-              {isDesktopPointer ? (
-                <div className="w-full">
-                  <HeroParallaxDemo />
-                </div>
-              ) : (
-                <div className="w-full rounded-2xl border border-white/10 bg-neutral-950 p-6">
-                  <h2 className="text-2xl font-bold">Selected Work</h2>
-                  <p className="mt-2 text-sm text-white/70">
-                    Portfolio interaktif dimatikan di mobile untuk mempercepat
-                    loading. Buka halaman work untuk melihat semua project.
-                  </p>
-                  <a
-                    href="/work"
-                    className="mt-5 inline-flex rounded-lg bg-[#47FFE0] px-4 py-2 font-semibold text-black"
-                  >
-                    Lihat Project
-                  </a>
-                </div>
-              )}
+              <div>
+                <HeroParallaxDemo />
+              </div>
             </section>
 
             <section id="services" className="relative -mt-8 w-full md:mt-160">
