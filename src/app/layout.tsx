@@ -15,34 +15,34 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://nexxacodeid.site"),
   // Catchy title with your 3 main keywords
-  title: "NexxxaCodeID | Web Developer, SEO Expert & Website Maintenance",
+  title: "NexxaCodeID | Web Developer, SEO Expert & Website Maintenance",
   description:
-    "NexxxaCodeID provides agency-level Web Development, professional SEO optimization, and reliable Website Maintenance services. High-performance digital solutions built for scale.",
+    "NexxaCodeID provides agency-level Web Development, professional SEO optimization, and reliable Website Maintenance services. High-performance digital solutions built for scale.",
   keywords: [
     "Web Developer",
     "SEO Expert",
     "Website Maintenance Services",
-    "NexxxaCodeID Portfolio",
+    "NexxaCodeID Portfolio",
     "Fullstack Developer",
     "Performance Optimization",
     "Next.js Development Agency",
   ],
-  authors: [{ name: "NexxxaCodeID" }],
-  creator: "NexxxaCodeID",
+  authors: [{ name: "NexxaCodeID" }],
+  creator: "NexxaCodeID",
 
   // Social Media Preview (Open Graph)
   openGraph: {
-    title: "NexxxaCodeID - Web Developer, SEO & Maintenance",
+    title: "NexxaCodeID - Web Developer, SEO & Maintenance",
     description:
       "Complete digital solutions: From building high-speed websites to SEO and routine maintenance. Check our portfolio!",
     url: "https://nexxacodeid.site",
-    siteName: "NexxxaCodeID",
+    siteName: "NexxaCodeID",
     images: [
       {
         url: "/og-image.jpeg", // Make sure this 1200x630px file is in your /public folder!
         width: 1200,
         height: 630,
-        alt: "NexxxaCodeID - Web Development, SEO & Maintenance Agency",
+        alt: "NexxaCodeID - Web Development, SEO & Maintenance Agency",
       },
     ],
     locale: "id_ID",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   // Twitter/X Preview
   twitter: {
     card: "summary_large_image",
-    title: "NexxxaCodeID | Web Dev & SEO Solutions",
+    title: "NexxaCodeID | Web Dev & SEO Solutions",
     description:
       "Expert Web Developer, SEO, and Website Maintenance services for your business.",
     images: ["/og-image.jpeg"],
