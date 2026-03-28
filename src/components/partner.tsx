@@ -3,29 +3,17 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-const partners = [
-  {
-    id: 1,
-    name: "Raditya Rangga Pratama",
-    role: "Cyber Security Specialist",
-    image: "/raditya.avif",
-  },
-  {
-    id: 2,
-    name: "Fathir Robbany Giblatar",
-    role: "Project Manager",
-    image: "/fathir.avif",
-  },
-  {
-    id: 3,
-    name: "Fang Xiao",
-    role: "FullStack Developer",
-    image: "/fang.avif",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function Partner() {
+  const t = useTranslations("partners");
+
+  const partner = [
+    { id: 1, image: "/raditya.avif" },
+    { id: 2, image: "/fathir.avif" },
+    { id: 3, image: "/fang.avif" },
+  ];
+
   return (
     <section className="w-full py-24 bg-white/80 flex flex-col items-center justify-center">
       <div className="text-center mb-16 px-4">
@@ -35,7 +23,7 @@ export default function Partner() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-emerald-400 font-mono tracking-[0.3em] text-sm mb-4 uppercase"
         >
-          Collaborative Excellence
+          {t("badge")}
         </motion.h5>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -43,11 +31,11 @@ export default function Partner() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-4xl md:text-6xl font-bold text-black font-serif"
         >
-          our partners
+          {t("title")}
         </motion.h2>
 
         <div className="mt-16 flex flex-wrap justify-center gap-8 md:gap-12 max-w-6xl px-6">
-          {partners.map((item, index) => (
+          {partner.map((item, index) => (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, scale: 0.9 }}
@@ -59,8 +47,9 @@ export default function Partner() {
               <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out">
                 <Image
                   src={item.image}
-                  alt={item.name}
+                  alt={t(`list.${index}.name`)}
                   fill
+                  unoptimized
                   className="object-cover object-center transform group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80" />
@@ -71,17 +60,16 @@ export default function Partner() {
                   layoutId={`line-${item.id}`}
                 />
                 <h3 className="text-2xl font-bold text-white mb-1 tracking-tight">
-                  {item.name}
+                  {t(`list.${index}.name`)}
                 </h3>
                 <p className="text-emerald-400 font-mono text-sm uppercase tracking-widest mb-4">
-                  {item.role}
+                  {t(`list.${index}.role`)}
                 </p>
 
                 {/* Hidden text that reveals on hover */}
                 <div className="max-h-0 opacity-0 group-hover:max-h-20 group-hover:opacity-100 transition-all duration-500 ease-in-out">
                   <p className="text-gray-400 text-sm leading-relaxed">
-                    Expert collaborator specialized in high-end project delivery
-                    and secure infrastructure.
+                    {t(`list.${index}.desc`)}
                   </p>
                 </div>
               </div>

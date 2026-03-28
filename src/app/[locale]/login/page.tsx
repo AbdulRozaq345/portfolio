@@ -1,6 +1,6 @@
 "use client";
 import { useState, type FormEvent, useEffect } from "react";
-import { createClient } from "../../../utils/supabase/client";
+import { createClient } from "../../../../utils/supabase/client";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
@@ -13,7 +13,7 @@ export default function Login() {
   const [lockTimer, setLockTimer] = useState(0);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
- 
+
   const [isSecure, setIsSecure] = useState(true);
   const supabase = createClient();
   const router = useRouter();
@@ -33,7 +33,6 @@ export default function Login() {
     };
     checkSession();
   }, [router, supabase]);
-
 
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -96,7 +95,6 @@ export default function Login() {
     if (!validateEmail(email)) return;
     if (!validatePassword(password)) return;
 
-
     setLoading(true);
     setError("");
 
@@ -139,7 +137,6 @@ export default function Login() {
       setLoading(false);
     }
   };
-
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-black font-sans">
@@ -209,7 +206,6 @@ export default function Login() {
               placeholder="••••••••"
               className="w-full p-3 bg-black border border-white/20 rounded-lg text-white focus:border-[#47FFE0] outline-none"
               onChange={(e) => setPassword(e.target.value)}
-    
               value={password}
               required
               disabled={isLocked}

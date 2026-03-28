@@ -242,7 +242,7 @@ export const NavbarLogo = () => {
       href="#"
       className="relative z-20 mr-4 flex items-center right-10 space-x-2 px-2 py-1 text-sm font-normal text-white"
     >
-      <Image src="/nexxa.avif" alt="logo" width={80} height={80} />
+      <Image src="/nexxa.avif" alt="logo" width={80} height={80} priority />
     </a>
   );
 };

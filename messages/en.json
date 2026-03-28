@@ -1,0 +1,100 @@
+{
+  "navbar": {
+    "home": "HOME",
+    "about": "ABOUT",
+    "services": "SERVICES",
+    "avilable": "Available for work ✦ Available for work ✦ "
+  },
+
+  "home": {
+    "title": "DESIGNER & WEB DEVELOPER EXPERT",
+    "subtitle1": "Agency-level web development services at freelancer rates",
+    "subtitle2": "our mission is to design and develop a website that you and your audience love .",
+    "rotatedText1": "YEARS OF",
+    "rotatedText2": "EXPERIENCE IN",
+    "rotatedText3": "WEB DEVELOPMENT",
+    "about": "About"
+  },
+
+  "about": {
+    "items": [
+      "Infrastructure & Government Systems Specialist – Extensive experience in managing and maintaining server infrastructures for various local government agencies, ensuring high availability and seamless public service operations.",
+      "Dedicated Cyber Security Division – A specialized unit focused on system penetration testing, sensitive data auditing, and robust server protection to mitigate external digital threats for both public and corporate sectors.",
+      "Advanced UI/UX Design & Digital Architecture – Defining new visual standards through deep user experience research, delivering modern, exclusive, and highly intuitive interfaces that prioritize user engagement.",
+      "Fullstack Web Engineering – Developing high-performance web ecosystems using PHP, JavaScript, and Laravel, capable of handling large-scale data traffic with absolute responsiveness.",
+      "Clean Code & Scalable Architecture – Prioritizing organized and maintainable code structures, ensuring every digital product we build is ready for seamless future scaling and feature integration.",
+      "Digital Conversion & Strategic Marketing Design – Crafting result-oriented visual strategies that help clients boost business conversion rates through a powerful and optimized digital presence.",
+      "Interactive Motion & Visual Experience – Bringing a new dimension to the web through premium animations, Lottie integrations, and unique interactions that create a lasting impression on every user.",
+      "Digital Innovation & Security-First Strategy – Integrating the latest technological innovations with advanced cyber security to provide future-proof digital solutions for modern businesses."
+    ]
+  },
+
+  "project": {
+    "title": "The Ultimate <br></br> development studio",
+    "text": "We build beautiful products with the latest technologies and frameworks. We are a team of passionate developers and designers that love to build amazing products.",
+    "btn": "See more"
+  },
+
+  "services": {
+    "circular": "WEB*PROGRAMMING*",
+    "badge": "How Can I Help?",
+    "title": "Services",
+    "stats": {
+      "tracks": "Service Tracks",
+      "delivery": "Delivery Focus",
+      "clean": "UI + Frontend"
+    },
+    "cta": {
+      "question": "Need a stronger landing page?",
+      "description": "If you want, I can take this further with a proper CTA connected to WhatsApp, email, or a contact form that fits the flow of the page.",
+      "button": "Let's Talk"
+    },
+    "list": [
+      {
+        "title": "SEO Optimization",
+        "description": "We elevate your digital presence by aligning search intent with technical precision, ensuring your brand ranks where it matters most.",
+        "detail": "Focused on keyword strategy, technical site audits, and high-authority backlink architecture.",
+        "meta": "Ahrefs, Google Search Console, On-page/Off-page SEO"
+      },
+      {
+        "title": "WEB DEVELOPMENT",
+        "description": "I could transform static designs into websites that are fast, responsive, and feel premium across every screen size.",
+        "detail": "Clean builds, organized component structure, and a consistent user experience throughout.",
+        "meta": "Next.js, responsive build, production-ready frontend"
+      },
+      {
+        "title": "System Maintenance",
+        "description": "We keep your digital assets running at peak performance, providing a secure and seamless experience through proactive updates and monitoring.",
+        "detail": "Focused on security patching, database optimization, and real-time performance tuning.",
+        "meta": "Uptime monitoring, Security audits, Automated backups"
+      }
+    ]
+  },
+
+  "partners": {
+    "badge": "Collaborative Excellence",
+    "title": "our partners",
+    "list": [
+      {
+        "name": "Raditya Rangga Pratama",
+        "role": "Cyber Security Specialist",
+        "desc": "Expert collaborator specialized in high-end project delivery and secure infrastructure."
+      },
+      {
+        "name": "Fathir Robbany Giblatar",
+        "role": "Project Manager",
+        "desc": "Expert collaborator specialized in high-end project delivery and secure infrastructure."
+      },
+      {
+        "name": "Fang Xiao",
+        "role": "FullStack Developer",
+        "desc": "Expert collaborator specialized in high-end project delivery and secure infrastructure."
+      }
+    ]
+  },
+
+  "work": {
+    "work": "Recent Work",
+    "btn": "Go Back"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "navbar": {
+    "home": "BERANDA",
+    "about": "TENTANG KAMI",
+    "services": "LAYANAN",
+    "avilable": "Tersedia untuk berkerja ✦ Tersedia untuk berkerja ✦"
+  },
+
+  "home": {
+    "title": "AHLI DESAIN & PENGEMBANGAN WEB",
+    "subtitle1": "Layanan pengembangan web berkualitas agensi dengan tarif freelancer",
+    "subtitle2": "Misi kami adalah merancang dan mengembangkan situs web yang disukai oleh Anda dan audiens Anda.",
+    "rotatedText1": "BERTAHUN-TAHUN",
+    "rotatedText2": "PENGALAMAN DALAM",
+    "rotatedText3": "PENGEMBANGAN WEB",
+    "about": "Tentang"
+  },
+
+  "about": {
+    "items": [
+      "Spesialis Infrastruktur & Sistem Pemerintahan – Memiliki pengalaman luas dalam mengelola dan memelihara infrastruktur server untuk berbagai instansi pemerintah daerah, guna memastikan ketersediaan yang tinggi dan kelancaran operasional layanan publik.",
+      "Divisi Keamanan Siber Khusus – Unit khusus yang berfokus pada pengujian penetrasi sistem, audit data sensitif, dan perlindungan server yang kuat untuk memitigasi ancaman digital eksternal bagi sektor publik dan korporat.",
+      "Desain UI/UX Tingkat Lanjut & Arsitektur Digital – Mengembangkan ekosistem web berkinerja tinggi menggunakan PHP, JavaScript, dan Laravel, yang mampu menangani lalu lintas data berskala besar dengan responsivitas mutlak.",
+      "Fullstack Web Engineering – Developing high-performance web ecosystems using PHP, JavaScript, and Laravel, capable of handling large-scale data traffic with absolute responsiveness.",
+      "Clean Code & Arsitektur Skalabel – Mengutamakan struktur kode yang terorganisir dan mudah dipelihara, memastikan setiap produk digital yang kami bangun siap untuk penskalaan dan integrasi fitur di masa depan tanpa hambatan.",
+      "Konversi Digital & Desain Pemasaran Strategis – Menyusun strategi visual yang berorientasi pada hasil yang membantu klien meningkatkan tingkat konversi bisnis melalui kehadiran digital yang kuat dan dioptimalkan.",
+      "IGerakan Interaktif & Pengalaman Visual – Menghadirkan dimensi baru ke web melalui animasi premium, integrasi Lottie, dan interaksi unik yang menciptakan kesan abadi pada setiap pengguna.",
+      "Inovasi Digital & Strategi Keamanan Pertama – Mengintegrasikan inovasi teknologi terbaru dengan keamanan siber canggih untuk menyediakan solusi digital yang siap menghadapi masa depan bagi bisnis modern."
+    ]
+  },
+
+  "project": {
+    "title": "Studio <br></br> Pengembangan Terbaik",
+    "text": "Kami menciptakan produk-produk berkualitas tinggi dengan teknologi dan kerangka kerja terkini. Kami adalah tim pengembang dan desainer yang bersemangat dan mencintai proses pembuatan produk-produk luar biasa.",
+    "btn": "lihat lebih lanjut"
+  },
+
+  "services": {
+    "circular": "WEB*PROGRAMMING*",
+    "badge": "bagaimana kami dapat membantu?",
+    "title": "Layanan",
+    "stats": {
+      "tracks": "Jalur Layanan",
+      "delivery": "Fokus Pengiriman",
+      "clean": "UI + Frontend"
+    },
+    "cta": {
+      "question": "Perlu halaman landing yang lebih kuat?",
+      "description": "Jika Anda ingin, saya bisa mengembangkan ini lebih lanjut dengan CTA yang tepat terhubung ke WhatsApp, email, atau formulir kontak yang sesuai dengan alur halaman.",
+      "button": "Mari Berbicara"
+    },
+    "list": [
+      {
+        "title": "Optimasi SEO",
+        "description": "Kami meningkatkan kehadiran digital Anda dengan menyelaraskan niat pencarian dengan presisi teknis, memastikan merek Anda berada di peringkat teratas di tempat yang paling penting.",
+        "detail": "Berfokus pada strategi kata kunci, audit teknis situs, dan arsitektur backlink berotoritas tinggi.",
+        "meta": "Ahrefs, Konsole Pencarian Google, SEO On-page/Off-page"
+      },
+      {
+        "title": "Pengembangan Web",
+        "description": "Saya dapat mengubah desain statis menjadi situs web yang cepat, responsif, dan terasa premium di semua ukuran layar.",
+        "detail": "Kode yang rapi, struktur komponen yang terorganisir, dan pengalaman pengguna yang konsisten di seluruh situs.",
+        "meta": "Next.js, pengembangan responsif, frontend siap-produksi"
+      },
+      {
+        "title": "Pemeliharaan Sistem",
+        "description": "Kami menjaga aset digital Anda berjalan di performa terbaik, menyediakan pengalaman yang aman dan mulus melalui pembaruan proaktif dan pemantauan.",
+        "detail": "Berfokus pada penambalan keamanan, optimasi basis data, dan penyempurnaan performa secara real-time.",
+        "meta": "Pemantauan uptime, Audit keamanan, Cadangan otomatis."
+      }
+    ]
+  },
+
+  "partners": {
+    "badge": "Keunggulan Kolaboratif",
+    "title": "Mitra Kami",
+    "list": [
+      {
+        "name": "Raditya Rangga Pratama",
+        "role": "Spesialis Keamanan Siber",
+        "desc": "Mitra ahli yang berspesialisasi dalam pengelolaan proyek kelas atas dan infrastruktur yang aman."
+      },
+      {
+        "name": "Fathir Robbany Giblatar",
+        "role": "Manager Proyek",
+        "desc": "Mitra ahli yang berspesialisasi dalam pengelolaan proyek kelas atas dan infrastruktur yang aman."
+      },
+      {
+        "name": "Fang Xiao",
+        "role": "FullStack Developer",
+        "desc": "Mitra ahli yang berspesialisasi dalam pengiriman proyek kelas atas dan infrastruktur yang aman."
+      }
+    ]
+  },
+
+  "work": {
+    "work": "Pekerjaan terbaru",
+    "btn": "Kembali"
+  }
+}

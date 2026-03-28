@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/constans/work";
 import Button1 from "./button1";
+import { useTranslations } from "next-intl";
 
 type WorkCardProps = {
   items?: Product[];
@@ -11,12 +12,13 @@ type WorkCardProps = {
 
 export const WorkCard = ({ items: propItems, $items }: WorkCardProps) => {
   const items = propItems ?? $items ?? [];
+  const t = useTranslations("work");
 
   return (
     <section className="bg-slate-950 px-6 py-20">
       <div className="mx-auto max-w-7xl">
         <h2 className="mb-16 text-5xl font-bold tracking-tighter text-white md:text-7xl">
-          Recent Work
+          {t("work")}
         </h2>
         <div className="relative flex flex-col items-start justify-center mb-12 gap-16 md:gap-24 ">
         <Button1 />

@@ -1,8 +1,10 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const Button1 = () => {
     const router = useRouter();
+    const t = useTranslations("work");
   return (
     <button
       onClick={() => router.push("/")}
@@ -26,7 +28,7 @@ const Button1 = () => {
           />
         </svg>
       </div>
-      <p className="translate-x-2">Go Back</p>
+      <p className="translate-x-2">{t("btn")}</p>
     </button>
   );
 };
