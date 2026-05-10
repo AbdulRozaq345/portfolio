@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   motion,
   useScroll,
@@ -11,6 +11,14 @@ import {
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/navigation";
 
+// Repeat array until we have `n` items
+function fill<T>(arr: T[], n: number): T[] {
+  if (!arr.length) return [];
+  const out: T[] = [];
+  while (out.length < n) out.push(...arr);
+  return out.slice(0, n);
+}
+
 export const HeroParallax = ({
   products,
 }: {
@@ -20,80 +28,92 @@ export const HeroParallax = ({
     thumbnail: string[];
   }[];
 }) => {
-  const firstRow = products.slice(0, 5);
-  const secondRow = products.slice(5, 10);
-  const thirdRow = products.slice(10, 15);
-  const ref = React.useRef(null);
+  const filled = fill(products, 12);
+  const firstRow = filled.slice(0, 4);
+  const secondRow = filled.slice(4, 8);
+  const thirdRow = filled.slice(8, 12);
+
+  const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
 
-  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
+  const spring = { stiffness: 280, damping: 28, bounce: 0 };
 
   const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, 1000]),
-    springConfig,
+    useTransform(scrollYProgress, [0, 1], [0, 1200]),
+    spring,
   );
   const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -1000]),
-    springConfig,
+    useTransform(scrollYProgress, [0, 1], [0, -1200]),
+    spring,
   );
   const rotateX = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [15, 0]),
-    springConfig,
+    useTransform(scrollYProgress, [0, 0.2], [22, 0]),
+    spring,
   );
   const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
-    springConfig,
+    useTransform(scrollYProgress, [0, 0.2], [0.15, 1]),
+    spring,
   );
   const rotateZ = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [20, 0]),
-    springConfig,
+    useTransform(scrollYProgress, [0, 0.2], [24, 0]),
+    spring,
   );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-700, 0]),
-    springConfig,
+    useTransform(scrollYProgress, [0, 0.2], [-900, 0]),
+    spring,
   );
+
   return (
     <div
       ref={ref}
-      className="relative flex h-[190vh] w-screen max-w-full flex-col overflow-hidden py-16 antialiased [perspective:1000px] [transform-style:preserve-3d] md:h-[220vh] md:py-24"
+      className="relative flex h-[200vh] w-screen max-w-full flex-col overflow-hidden py-16 antialiased
+        [perspective:1200px] [transform-style:preserve-3d]
+        md:h-[240vh] md:py-24"
     >
+      {/* Ambient glow background */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-cyan-500/[0.06] blur-[120px]" />
+        <div className="absolute right-0 top-1/2 h-[400px] w-[400px] rounded-full bg-emerald-500/[0.05] blur-[100px]" />
+      </div>
+
       <Header />
+
       <motion.div
-        style={{
-          rotateX,
-          rotateZ,
-          translateY,
-          opacity,
-        }}
-        className="w-full max-w-full "
+        style={{ rotateX, rotateZ, translateY, opacity }}
+        className="w-full max-w-full"
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
-          {firstRow.map((product) => (
+        {/* Row 1 — slides right */}
+        <motion.div className="mb-16 flex flex-row-reverse space-x-reverse space-x-16 md:mb-20 md:space-x-20">
+          {firstRow.map((product, i) => (
             <ProductCard
               product={product}
               translate={translateX}
-              key={product.title}
+              key={`r1-${i}`}
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row  mb-20 space-x-20 ">
-          {secondRow.map((product) => (
+
+        {/* Row 2 — slides left */}
+        <motion.div className="mb-16 flex flex-row space-x-16 md:mb-20 md:space-x-20">
+          {secondRow.map((product, i) => (
             <ProductCard
               product={product}
               translate={translateXReverse}
-              key={product.title}
+              key={`r2-${i}`}
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
-          {thirdRow.map((product) => (
+
+        {/* Row 3 — slides right */}
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-16 md:space-x-20">
+          {thirdRow.map((product, i) => (
             <ProductCard
               product={product}
               translate={translateX}
-              key={product.title}
+              key={`r3-${i}`}
             />
           ))}
         </motion.div>
@@ -104,35 +124,73 @@ export const HeroParallax = ({
 
 export const Header = () => {
   const t = useTranslations("project");
-
   return (
-    <div className="relative left-0 top-0 mx-auto flex w-full max-w-7xl flex-col px-4 py-10 md:py-20">
-      <div>
-        <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
-          {t.rich("title", { br: () => <br /> })}
-        </h1>
-        <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
-          {t("text")}
-        </p>
-      </div>
-     <div className="relative md:absolute left-0 mt-10 md:left-[45rem] md:top-60 lg:left-[50rem]">
-  <Link href="/work" className="block">
-    <button className="group relative bg-neutral-800 h-16 w-64 border border-white/10 text-left p-4 text-gray-50 text-base font-bold rounded-xl overflow-hidden transition-all duration-500 hover:border-rose-300/50 hover:text-rose-300
-      before:absolute before:w-12 before:h-12 before:right-1 before:top-1 before:z-10 before:bg-violet-500 before:rounded-full before:blur-lg before:duration-500 
-      after:absolute after:z-10 after:w-20 after:h-20 after:bg-rose-300/20 after:right-8 after:top-3 after:rounded-full after:blur-lg after:duration-500
-      hover:before:right-12 hover:before:-bottom-8 hover:before:blur-[30px] hover:before:bg-violet-600
-      hover:after:-right-8 hover:after:bg-rose-400">
-      
-      <span className="relative z-20 flex items-center justify-between">
-        {t("btn")}
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 transition-transform group-hover:translate-x-1">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-        </svg>
-      </span>
-    </button>
-  </Link>
-  </div>
-  </div>
+    <div className="relative mx-auto mb-16 flex w-full max-w-7xl flex-col gap-6 px-4 py-10 md:py-20">
+      {/* Badge */}
+      <motion.p
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-xs font-semibold uppercase tracking-[0.35em] text-cyan-400"
+      >
+        Selected Work
+      </motion.p>
+
+      <motion.h1
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.08 }}
+        className="text-3xl font-bold dark:text-white md:text-7xl"
+      >
+        {t.rich("title", { br: () => <br /> })}
+      </motion.h1>
+
+      <motion.p
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.15 }}
+        className="max-w-2xl text-sm leading-7 text-neutral-400 md:text-lg"
+      >
+        {t("text")}
+      </motion.p>
+
+      {/* CTA button */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.22 }}
+        className="mt-2 md:absolute md:right-4 md:top-20"
+      >
+        <Link href="/work" className="block">
+          <button
+            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-neutral-900 px-6 py-4 text-sm font-bold text-gray-100 transition-all duration-500
+              hover:border-cyan-400/40 hover:text-cyan-300
+              before:absolute before:right-2 before:top-2 before:h-10 before:w-10 before:rounded-full before:bg-violet-500 before:blur-lg before:transition-all before:duration-500
+              after:absolute after:right-6 after:top-3 after:h-14 after:w-14 after:rounded-full after:bg-rose-300/20 after:blur-lg after:transition-all after:duration-500
+              hover:before:-bottom-6 hover:before:right-10 hover:before:blur-[28px] hover:before:bg-violet-600
+              hover:after:-right-6 hover:after:bg-rose-400/30"
+          >
+            <span className="relative z-20 flex items-center gap-3">
+              {t("btn")}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                className="h-4 w-4 transition-transform group-hover:translate-x-1"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                />
+              </svg>
+            </span>
+          </button>
+        </Link>
+      </motion.div>
+    </div>
   );
 };
 
@@ -144,50 +202,79 @@ export const ProductCard = ({
   translate: MotionValue<number>;
 }) => {
   const [index, setIndex] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Mekanisme Carousel Otomatis
   useEffect(() => {
-    if (product.thumbnail.length <= 2) return;
-    const timer = setInterval(() => {
+    if (product.thumbnail.length <= 1) return;
+    timerRef.current = setInterval(() => {
       setIndex((prev) => (prev + 1) % product.thumbnail.length);
     }, 3000);
-    return () => clearInterval(timer);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
   }, [product.thumbnail]);
 
   return (
     <motion.div
       style={{ x: translate }}
-      whileHover={{ y: -20 }}
-      className="group/product h-96 w-[30rem] relative shrink-0 overflow-hidden rounded-xl bg-neutral-900"
+      whileHover={{ y: -16, scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      className="group/card relative h-[22rem] w-[24rem] shrink-0 overflow-hidden rounded-2xl
+        border border-white/[0.07] bg-neutral-950
+        shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_8px_40px_rgba(0,0,0,0.5)]
+        transition-shadow duration-500
+        hover:border-cyan-400/25
+        hover:shadow-[0_0_30px_rgba(71,255,224,0.12),0_16px_60px_rgba(0,0,0,0.6)]
+        md:h-[26rem] md:w-[30rem]"
     >
-      <a href={product.link} className="block h-full w-full relative">
+      <a href={product.link} target="_blank" rel="noopener noreferrer" className="block h-full w-full">
+        {/* Image carousel */}
         <AnimatePresence mode="wait">
           <motion.img
             key={product.thumbnail[index]}
             src={product.thumbnail[index]}
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="object-cover object-left-top absolute h-full w-full inset-0"
             alt={product.title}
+            initial={{ opacity: 0, scale: 1.06 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.97 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="absolute inset-0 h-full w-full object-cover object-left-top"
           />
         </AnimatePresence>
 
-        <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black transition-opacity duration-300 pointer-events-none" />
-        <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white transition-opacity duration-300 z-10 text-xl font-bold">
-          {product.title}
-        </h2>
+        {/* Hover overlay */}
+        <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 transition-opacity duration-400 group-hover/card:opacity-100" />
 
-        {/* Indikator Titik Carousel */}
-        <div className="absolute top-4 right-4 flex space-x-1.5 z-20">
-          {product.thumbnail.map((_, i) => (
-            <div
-              key={i}
-              className={`h-1 w-4 rounded-full transition-all duration-300 ${i === index ? "bg-[#47FFE0] shadow-[0_0_8px_#47FFE0]" : "bg-white/30"}`}
-            />
-          ))}
+        {/* Title */}
+        <div className="absolute bottom-0 left-0 w-full translate-y-2 p-6 opacity-0 transition-all duration-400 group-hover/card:translate-y-0 group-hover/card:opacity-100">
+          <div className="mb-2 h-[1px] w-10 bg-cyan-400" />
+          <h2 className="text-lg font-bold text-white">{product.title}</h2>
+          <p className="mt-1 flex items-center gap-1.5 text-xs font-medium text-cyan-400">
+            <span>View project</span>
+            <svg viewBox="0 0 12 12" fill="none" className="h-3 w-3" stroke="currentColor" strokeWidth={2}>
+              <path d="M2 10L10 2M10 2H4M10 2V8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </p>
         </div>
+
+        {/* Carousel dots */}
+        {product.thumbnail.length > 1 && (
+          <div className="absolute right-4 top-4 z-20 flex gap-1.5">
+            {product.thumbnail.map((_, i) => (
+              <div
+                key={i}
+                className={`h-1 rounded-full transition-all duration-300 ${
+                  i === index
+                    ? "w-5 bg-cyan-400 shadow-[0_0_6px_#47FFE0]"
+                    : "w-2 bg-white/25"
+                }`}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* Corner glow on hover */}
+        <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 ring-1 ring-inset ring-cyan-400/20 transition-opacity duration-500 group-hover/card:opacity-100" />
       </a>
     </motion.div>
   );

@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\file_code\\\\portfolio\" -Recurse -Force)",
+      "Bash(Select-Object FullName)",
+      "Bash(npm install *)",
+      "Bash(Get-Content *)",
+      "Bash(node *)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/id)",
+      "Bash(curl *)",
+      "Bash(echo \"EXIT_CODE: $?\")",
+      "Bash(python3 -c \"import sys, json; lines=[]; [lines.append\\(json.loads\\(l\\)\\) for l in sys.stdin if l.strip\\(\\)]; [print\\(x['timestamp'], x['level'], x['message'][:120]\\) for x in lines[-10:]]\")",
+      "Bash(grep -E \"\\\\.\\(png|avif|jpg|svg|webp\\)$\")",
+      "Bash(python3 -c ' *)"
+    ]
+  }
+}
