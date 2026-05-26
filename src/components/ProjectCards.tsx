@@ -29,8 +29,8 @@ const PROJECTS = [
     title: "Nocturn",
     link: "https://nocturn-pro.vercel.app/",
     thumbnail: "/nocturn.png",
-    tag: "Dark Theme",
-    desc: "Sleek dark-themed productivity application",
+    tag: "Music Player",
+    desc: "Nocturn is a web-based music player designed for a seamless and immersive listening experience — right from your browser, no installation needed.",
   },
 ];
 
