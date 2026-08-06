@@ -10,6 +10,13 @@ export interface Product {
 }
 export const products: Product[] = [
   {
+    title: "KediriKita",
+    link: "https://www.kedirikita.id/",
+    thumbnail: ["/KediriKita.png"],
+    location: "Indonesia",
+    dev: "Nexxacodeid team",
+  },
+  {
     title: "AikoCare",
     link: "https://aikocare.vercel.app/",
     thumbnail: ["/aikocare.png"], // Gue bikin array string biar aman
