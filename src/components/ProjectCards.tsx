@@ -4,6 +4,13 @@ import { Link } from "@/lib/navigation";
 import { useTranslations } from "next-intl";
 
 const PROJECTS = [
+    {
+    title: "KediriKita",
+    link: "https://www.kedirikita.id/",
+    thumbnail: ["/KediriKita.png"],
+    tag: "Destination Web",
+    desc: "Kediri Kita is an interactive digital portal that presents regional data, exploration maps, and 360° virtual tours of Kediri destinations in a modern format, with multi-language support.",
+  },
   {
     title: "AikoCare",
     link: "https://aikocare.vercel.app/",
