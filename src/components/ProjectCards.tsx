@@ -7,7 +7,7 @@ const PROJECTS = [
     {
     title: "KediriKita",
     link: "https://www.kedirikita.id/",
-    thumbnail: ["/KediriKita.png"],
+    thumbnail: "/KediriKita.png",
     tag: "Destination Web",
     desc: "Kediri Kita is an interactive digital portal that presents regional data, exploration maps, and 360° virtual tours of Kediri destinations in a modern format, with multi-language support.",
   },
